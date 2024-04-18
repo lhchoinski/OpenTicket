@@ -41,7 +41,6 @@ namespace OpenTicket.Api.Controllers
         }
 
         [HttpPut]
-        [Route("{id}")]
         public async Task<ICommandResult> UpdateAsync([FromBody] UpdateTicketCommand command)
         {
             return await handler.HandleAsync(command);

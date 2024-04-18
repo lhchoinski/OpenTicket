@@ -12,11 +12,13 @@ namespace OpenTicket.Infra.Data.Repository
 {
     public class TicketRepository : ITicketRepository
     {
+        private readonly DynamicParameters parameters;
         private readonly DataContext dataContext;
 
         public TicketRepository(DataContext context)
         {
             this.dataContext = context;
+            this.parameters = new DynamicParameters();
         }
 
         public async Task<IEnumerable<TicketQueryResult>> ListAsync()
@@ -26,14 +28,13 @@ namespace OpenTicket.Infra.Data.Repository
 
         public async Task<TicketQueryResult> GetAsync(int id)
         {
-            var parameters = new DynamicParameters();
+            
             parameters.Add("@Id", id);
-            return await dataContext.Connection.QueryFirstOrDefaultAsync<TicketQueryResult>(TicketQueries.OBTER, parameters);
+            return await dataContext.Connection.QueryFirstOrDefaultAsync<TicketQueryResult>(TicketQueries.OBTER, new { id });
         }
 
         public async Task<int> SaveAsync(Ticket ticket)
         {
-            var parameters = new DynamicParameters();
             parameters.Add("@Title", ticket.Title);
             parameters.Add("@Description", ticket.Description);
             parameters.Add("@TechnicianDescription", ticket.TechnicianDescription);
@@ -48,7 +49,6 @@ namespace OpenTicket.Infra.Data.Repository
 
         public async Task UpdateAsync(Ticket ticket)
         {
-            var parameters = new DynamicParameters();
             parameters.Add("@Id", ticket.Id);
             parameters.Add("@Title", ticket.Title);
             parameters.Add("@Description", ticket.Description);
@@ -64,7 +64,6 @@ namespace OpenTicket.Infra.Data.Repository
 
         public async Task DeleteAsync(int id)
         {
-            var parameters = new DynamicParameters();
             parameters.Add("@Id", id);
 
             await dataContext.Connection.ExecuteAsync(TicketQueries.DELETAR, parameters);

@@ -17,6 +17,19 @@ namespace OpenTicket.Domain.Entities
             Status = status;
         }
 
+        public Ticket(int id,string title, string description, string? technicianDescription, DateTime createdAt, DateTime? updatedAt, int employeeId, int? assignedEmployeeId, TicketStatus status)
+        {
+            Id = id;
+            Title = title;
+            Description = description;
+            TechnicianDescription = technicianDescription;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            EmployeeId = employeeId;
+            AssignedEmployeeId = assignedEmployeeId;
+            Status = status;
+        }
+
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

@@ -45,6 +45,7 @@ namespace OpenTicket.Domain.Handlers
                 return new TicketCommandResult(false, "Não foi possível atualizar o ticket", command.Notifications);
 
              var ticket = new Ticket(
+                            command.Id,
                             command.Title,
                             command.Description,
                             command.TechnicianDescription,
