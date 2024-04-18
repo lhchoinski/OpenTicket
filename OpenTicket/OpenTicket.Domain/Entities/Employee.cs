@@ -4,6 +4,15 @@ namespace OpenTicket.Domain.Entities
 {
     public class Employee
     {
+        public Employee(int id, string name, string email, string department, EmployeeType employeeType)
+        {   
+            Id = id;
+            Name = name;
+            Email = email;
+            Department = department;
+            EmployeeType = employeeType;
+        }
+
         public Employee(string name, string email, string department, EmployeeType employeeType)
         {
             Name = name;

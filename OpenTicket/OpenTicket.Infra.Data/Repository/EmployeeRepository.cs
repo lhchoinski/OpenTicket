@@ -13,11 +13,13 @@ namespace OpenTicket.Infra.Data.Repository
 {
     public class EmployeeRepository : IEmployeeRepository
     {
+        private readonly DynamicParameters parameters;
         private readonly DataContext dataContext;
         
         public EmployeeRepository(DataContext context)
         {
             this.dataContext = context;
+            this.parameters = new DynamicParameters();
         }
 
         public async Task<IEnumerable<EmployeeQueryResult>> ListAsync()
@@ -27,12 +29,13 @@ namespace OpenTicket.Infra.Data.Repository
         
         public async Task<EmployeeQueryResult> GetAsync(int id)
         {
-            return await dataContext.Connection.QueryFirstOrDefaultAsync<EmployeeQueryResult>(EmployeeQueries.OBTER, new { Id = id });
+            parameters.Add("@Id", id);
+            return await dataContext.Connection.QueryFirstOrDefaultAsync<EmployeeQueryResult>(EmployeeQueries.OBTER, new { id });
         }
         
         public async Task<int> SaveAsync(Employee employee)
         {
-            var parameters = new DynamicParameters();
+            
             parameters.Add("@Name", employee.Name);
             parameters.Add("@Email", employee.Email);
             parameters.Add("@Department", employee.Department);
@@ -43,7 +46,6 @@ namespace OpenTicket.Infra.Data.Repository
         
         public async Task UpdateAsync(Employee employee)
         {
-            var parameters = new DynamicParameters();
             parameters.Add("@Id", employee.Id);
             parameters.Add("@Name", employee.Name);
             parameters.Add("@Email", employee.Email);
@@ -55,11 +57,7 @@ namespace OpenTicket.Infra.Data.Repository
         
         public async Task DeleteAsync(int id)
         {
-            var parameters = new DynamicParameters();
-            var DataExclusao = DateTime.Now;
             parameters.Add("@Id", id);
-            parameters.Add("@DataExclusao", DataExclusao);
-
             await dataContext.Connection.ExecuteAsync(EmployeeQueries.DELETAR, parameters);
         }
     }

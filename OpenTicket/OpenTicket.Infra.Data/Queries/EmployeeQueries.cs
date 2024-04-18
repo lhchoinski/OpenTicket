@@ -41,14 +41,14 @@
 ;
 
 		public const string ATUALIZAR = @"
-			UPDATE employee
-            SET
-				Name = @Name,
-				Email = @Email,
-				Department = @Department,
-				EmployeeType = @EmployeeType,
-            WHERE
-				Id = @Id;"
+    		UPDATE employee
+    		SET
+       			Name = @Name,
+        		Email = @Email,
+        		Department = @Department,
+        		EmployeeType = @EmployeeType
+    		WHERE
+        		Id = @Id;"
 		;
 
 		public const string DELETAR = @"

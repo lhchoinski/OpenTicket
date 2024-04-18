@@ -33,7 +33,7 @@ namespace OpenTicket.Api.Extensions
         {
             services.AddTransient<EmployeeHandler, EmployeeHandler>();
             services.AddTransient<TicketHandler, TicketHandler>();
-            services.AddTransient<ManagerTicketHandler, ManagerTicketHandler >();
+            //services.AddTransient<ManagerTicketHandler, ManagerTicketHandler >();
             
         }
 

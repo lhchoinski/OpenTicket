@@ -9,7 +9,6 @@ namespace OpenTicket.Domain.Commands.Input.Employee
     public class SaveEmployeeCommand : Notifiable<Notification>, ICommandPadrao
     {
        
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Department { get; set; }

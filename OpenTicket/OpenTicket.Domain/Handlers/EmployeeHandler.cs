@@ -24,6 +24,7 @@ namespace OpenTicket.Domain.Handlers
                 return new EmployeeCommandResult(false, "Não foi possível salvar o funcionario", command.Notifications);
 
             var employee = new Employee(
+
                             command.Name,
                             command.Email,
                             command.Department,
@@ -40,6 +41,7 @@ namespace OpenTicket.Domain.Handlers
                 return new EmployeeCommandResult(false, "Não foi possível atualizar o funcionario", command.Notifications);
 
             var employee = new Employee(
+                            command.Id,
                             command.Name,
                             command.Email,
                             command.Department,

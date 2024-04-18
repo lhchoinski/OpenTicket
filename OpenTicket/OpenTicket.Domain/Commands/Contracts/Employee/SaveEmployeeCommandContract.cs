@@ -7,8 +7,6 @@ namespace OpenTicket.Domain.Commands.Contracts.Employee
     {
         public SaveEmployeeCommandContract(SaveEmployeeCommand command)
         {
-            Requires().IsNotNullOrEmpty(command.Id.ToString(), "Id", "Id é obrigatório");
-            Requires().IsGreaterThan(command.Id, 0, "Id", "Id deve ser maior que 0");
 
             Requires().IsLowerOrEqualsThan(command.Name, 50, "Nome", "O Nome deve conter no máximo 50 caracteres.");
             Requires().IsNotNull(command.Name, "Nome", "Nome é obrigatório");
