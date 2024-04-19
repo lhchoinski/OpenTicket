@@ -3,10 +3,10 @@ POST http://localhost:5290/Employee/
 Content-Type: application/json
 
 {
-    "Name": ,
-    "Email": "maria@exemplo.com",
-    "department": "aaa",
-    "employeeType": 2
+    "Name": "bbbbb",
+    "Email": "bbbb@exemplo.com",
+    "department": "bbbbbb",
+    "employeeType": 1
 
   }
 

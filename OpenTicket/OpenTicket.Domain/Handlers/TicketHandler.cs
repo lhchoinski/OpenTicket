@@ -1,4 +1,3 @@
-using OpenTicket.Infra.Comum;
 using System.Threading.Tasks;
 using OpenTicket.Domain.Enums;
 using OpenTicket.Domain.Entities;
@@ -6,23 +5,22 @@ using OpenTicket.Domain.Repository;
 using OpenTicket.Domain.Commands.Output;
 using OpenTicket.Domain.Commands.Input.Employee;
 using OpenTicket.Domain.Commands.Input.Ticket;
+using OpenTicket.Infra.Comum;
 
 namespace OpenTicket.Domain.Handlers
 {
-    public class TicketHandler : ICommandHandler<SaveTicketCommand>,
-                                        ICommandHandler<UpdateTicketCommand>,
-                                        ICommandHandler<DeleteTicketCommand>
+    public class TicketHandler
     {
         private readonly ITicketRepository repository;
-        public TicketHandler(ITicketRepository repository)
+        private readonly IEmployeeRepository employeeRepository;
+        public TicketHandler(ITicketRepository repository, IEmployeeRepository employeeRepository)
         {
             this.repository = repository;
+            this.employeeRepository = employeeRepository;
         }
 
-        public async Task<ICommandResult> HandleAsync(SaveTicketCommand command)
+        public async Task<ICommandResult> SaveTicketAsync(SaveTicketCommand command)
         {
-            if (!command.EhValido())
-                return new TicketCommandResult(false, "Não foi possível abrir o ticket", command.Notifications);
 
             var ticket = new Ticket(
                             command.Title,
@@ -37,37 +35,35 @@ namespace OpenTicket.Domain.Handlers
 
             ticket.Id = await repository.SaveAsync(ticket);
 
-            return new TicketCommandResult(true, "Ticket inserido com sucesso", command);
+            return new TicketCommandResult(true, "Ticket inserido com sucesso");
         }
-        public async Task<ICommandResult> HandleAsync(UpdateTicketCommand command)
-        {
-            if (!command.EhValido())
-                return new TicketCommandResult(false, "Não foi possível atualizar o ticket", command.Notifications);
 
-             var ticket = new Ticket(
-                            command.Id,
-                            command.Title,
-                            command.Description,
-                            command.TechnicianDescription,
-                            command.CreatedAt,
-                            command.UpdatedAt = DateTime.UtcNow,
-                            command.EmployeeId,
-                            command.AssignedEmployeeId,
-                            command.Status
-                            );
+        public async Task<ICommandResult> UpdateTicketAsync(UpdateTicketCommand command)
+        {
+
+            var ticket = new Ticket(
+                           command.Id,
+                           command.Title,
+                           command.Description,
+                           command.TechnicianDescription,
+                           command.CreatedAt,
+                           command.UpdatedAt = DateTime.UtcNow,
+                           command.EmployeeId,
+                           command.AssignedEmployeeId,
+                           command.Status
+                           );
 
             await repository.UpdateAsync(ticket);
 
-            return new TicketCommandResult(true, "Ticket atualizado com sucesso", command);
+
+            return new TicketCommandResult(true, "Ticket atualizado com sucesso");
         }
-        public async Task<ICommandResult> HandleAsync(DeleteTicketCommand command)
+        public async Task<ICommandResult> DeleteAsync(DeleteTicketCommand command)
         {
-            if (!command.EhValido())
-                return new TicketCommandResult(false, "Não foi possível deletar o Ticket", command.Notifications);
 
             await repository.DeleteAsync(command.Id);
 
-            return new TicketCommandResult(true, "Ticket deletado com sucesso", command);
+            return new TicketCommandResult(true, "Ticket deletado com sucesso");
         }
     }
 }

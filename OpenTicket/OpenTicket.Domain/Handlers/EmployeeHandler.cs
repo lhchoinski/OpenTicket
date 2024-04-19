@@ -8,9 +8,7 @@ using OpenTicket.Domain.Commands.Input.Employee;
 
 namespace OpenTicket.Domain.Handlers
 {
-    public class EmployeeHandler : ICommandHandler<SaveEmployeeCommand>,
-                                        ICommandHandler<UpdateEmployeeCommand>,
-                                        ICommandHandler<DeleteEmployeeCommand>
+    public class EmployeeHandler 
     {
         private readonly IEmployeeRepository repository;
         public EmployeeHandler(IEmployeeRepository repository)
@@ -18,13 +16,10 @@ namespace OpenTicket.Domain.Handlers
             this.repository = repository;
         }
 
-        public async Task<ICommandResult> HandleAsync(SaveEmployeeCommand command)
+        public async Task<ICommandResult> SaveEmployeeAsync(SaveEmployeeCommand command)
         {
-            if (!command.EhValido())
-                return new EmployeeCommandResult(false, "Não foi possível salvar o funcionario", command.Notifications);
 
             var employee = new Employee(
-
                             command.Name,
                             command.Email,
                             command.Department,
@@ -33,13 +28,10 @@ namespace OpenTicket.Domain.Handlers
 
             employee.Id = await repository.SaveAsync(employee);
 
-            return new EmployeeCommandResult(true, "Funcionario inserido com sucesso", command);
+            return new EmployeeCommandResult(true, "Funcionario inserido com sucesso");
         }
-        public async Task<ICommandResult> HandleAsync(UpdateEmployeeCommand command)
+        public async Task<ICommandResult> UpdateEmployeeAsync(UpdateEmployeeCommand command)
         {
-            if (!command.EhValido())
-                return new EmployeeCommandResult(false, "Não foi possível atualizar o funcionario", command.Notifications);
-
             var employee = new Employee(
                             command.Id,
                             command.Name,
@@ -50,16 +42,14 @@ namespace OpenTicket.Domain.Handlers
 
             await repository.UpdateAsync(employee);
 
-            return new EmployeeCommandResult(true, "Funcionario atualizado com sucesso", command);
+            return new EmployeeCommandResult(true,"Funcionario atualizado com sucesso");
         }
-        public async Task<ICommandResult> HandleAsync(DeleteEmployeeCommand command)
+        public async Task<ICommandResult> DeleteEmployeeAsync(DeleteEmployeeCommand command)
         {
-            if (!command.EhValido())
-                return new EmployeeCommandResult(false, "Não foi possível deletar o funcionario", command.Notifications);
 
             await repository.DeleteAsync(command.Id);
 
-            return new EmployeeCommandResult(true, "Funcionario deletado com sucesso", command);
+            return new EmployeeCommandResult(true, "Funcionario deletado com sucesso");
         }
     }
 }

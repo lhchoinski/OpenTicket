@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "title": "Pc travando",
     "description": "Meu pc nao para de travar quando estou trabalhando",
-    "employeeId": 9
+    "employeeId": 163
   }
 
 ### get all addresses 
@@ -20,10 +20,9 @@ PUT http://localhost:5290/api/Ticket/4
 Content-Type: application/json
 
 { 
-  "id": "4",
-  "Title": "Ticket aberto editado",
-  "Description":"descricao do ticket",
-  "EmployeeId":"4",
+    "title": "Pc travando",
+    "description": "Meu pc nao para de travar quando estou trabalhando",
+    "employeeId": 13
 }
 
 

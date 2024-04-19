@@ -9,7 +9,7 @@ using OpenTicket.Domain.Commands.Input.Ticket;
 
 namespace OpenTicket.Domain.Handlers
 {
-    public class ManagerTicketHandler : ICommandHandler<ManagerTicketCommand>
+    public class ManagerTicketHandler 
                                         
     {
         private readonly IManagerTicketRepository repository;
@@ -18,10 +18,8 @@ namespace OpenTicket.Domain.Handlers
             this.repository = repository;
         }
 
-            public async Task<ICommandResult> HandleAsync(ManagerTicketCommand command)
+            public async Task<ICommandResult> TicketManagerAsync(ManagerTicketCommand command)
         {
-            if (!command.EhValido())
-                return new ManagerTicketCommandResult(false, "Não foi possível atualizar o ticket", command.Notifications);
 
              var ticket = new Ticket(
                             command.Id,
@@ -33,7 +31,7 @@ namespace OpenTicket.Domain.Handlers
 
             await repository.UpdateAsync(ticket);
 
-            return new ManagerTicketCommandResult(true, "Ticket atualizado com sucesso", command);
+            return new ManagerTicketCommandResult(true, "Ticket atualizado com sucesso");
         }
        
     }

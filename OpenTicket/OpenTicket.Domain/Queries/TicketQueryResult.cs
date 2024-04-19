@@ -6,7 +6,7 @@ namespace OpenTicket.Domain.Queries
 {
     public class TicketQueryResult
     {
-       public int Id { get; set; }
+        public int Id { get; set; }
         public string? Title { get; set; }
         public string Description { get; set; }
         public string? TechnicianDescription { get; set; }

@@ -24,7 +24,7 @@ namespace OpenTicket.Api.Controllers
         [HttpPut]
         public async Task<ICommandResult> UpdateAsync([FromBody] ManagerTicketCommand command)
         {
-            return await handler.HandleAsync(command);
+            return await handler.TicketManagerAsync(command);
         }
 
        

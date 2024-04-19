@@ -7,7 +7,7 @@ namespace OpenTicket.Domain.Enums
         [Description("Client")]
         Client = 1,
         [Description("technician")]
-        technician = 2,
+        Technician = 2,
         [Description("Administrator")]
         Administrator = 3
     }

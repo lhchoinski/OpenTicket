@@ -6,7 +6,7 @@ using OpenTicket.Domain.Enums;
 
 namespace OpenTicket.Domain.Commands.Input.Employee
 {
-    public class UpdateEmployeeCommand : Notifiable<Notification>, ICommandPadrao
+    public class UpdateEmployeeCommand 
     {
        
         public int Id { get; set; }
@@ -14,10 +14,6 @@ namespace OpenTicket.Domain.Commands.Input.Employee
         public string Email { get; set; }
         public string Department { get; set; }
         public EmployeeType EmployeeType { get; set; }
-        public bool EhValido()
-        {
-            AddNotifications(new UpdateEmployeeCommandContract(this));
-            return IsValid;
-        }
+        
     }
 }

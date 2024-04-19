@@ -1,9 +1,9 @@
-using OpenTicket.Infra.Comum;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OpenTicket.Domain.Handlers;
 using OpenTicket.Domain.Repository;
 using OpenTicket.Domain.Commands.Input.Employee;
+using OpenTicket.Infra.Comum;
 
 namespace OpenTicket.Api.Controllers
 {
@@ -36,13 +36,13 @@ namespace OpenTicket.Api.Controllers
         [HttpPost]
         public async Task<ICommandResult> SaveAsync([FromBody] SaveEmployeeCommand command)
         {
-            return await handler.HandleAsync(command);
+            return await handler.SaveEmployeeAsync(command);
         }
 
         [HttpPut]
         public async Task<ICommandResult> UpdateAsync([FromBody] UpdateEmployeeCommand command)
         {
-            return await handler.HandleAsync(command);
+            return await handler.UpdateEmployeeAsync(command);
         }
 
         [HttpDelete]
@@ -50,7 +50,7 @@ namespace OpenTicket.Api.Controllers
         public async Task<ICommandResult> DeleteAsync(int id)
         {
             var command = new DeleteEmployeeCommand() { Id = id };
-            return await handler.HandleAsync(command);
+            return await handler.DeleteEmployeeAsync(command);
         }
     }
 }

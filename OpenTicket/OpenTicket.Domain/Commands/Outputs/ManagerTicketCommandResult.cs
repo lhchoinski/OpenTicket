@@ -4,14 +4,21 @@ namespace OpenTicket.Domain.Commands.Output
 {
     public class ManagerTicketCommandResult : ICommandResult
     {
-        public ManagerTicketCommandResult(bool sucess, string message, object data)
+        public bool Success { get; }
+        public string Message { get; }
+
+        // Construtor para sucesso
+        public ManagerTicketCommandResult(bool success, string message)
         {
-            Success = sucess;
+            Success = success;
             Message = message;
-            Data = data;
         }
-        public bool Success { get; set; }
-        public string Message { get; set; }
-        public object Data { get; set; }
+
+        // Construtor para falha com mensagens de erro
+        public ManagerTicketCommandResult(bool success, string message, IEnumerable<string> errors)
+        {
+            Success = success;
+            Message = message;
+        }
     }
 }
