@@ -25,7 +25,7 @@ namespace OpenTicket.Infra.Data.Repository
         {
             parameters.Add("@Id",ticket.Id);
             parameters.Add("@TechnicianDescription", ticket.TechnicianDescription);
-            parameters.Add("@UpdatedAt", ticket.UpdatedAt);
+            parameters.Add("@UpdatedAt", ticket.UpdatedAt = DateTime.UtcNow);
             parameters.Add("@AssignedEmployeeId",ticket.AssignedEmployeeId);
             parameters.Add("@Status", ticket.Status);
 

@@ -1,0 +1,14 @@
+
+
+### update an existing address by ID 
+PUT  http://localhost:5290/managerTicket/
+Content-Type: application/json
+
+{
+    "id": 15,
+    "technicianDescription": "PC retirado para manutencao",
+    "assignedEmployeeId": 8,
+    "status": 1
+}
+
+

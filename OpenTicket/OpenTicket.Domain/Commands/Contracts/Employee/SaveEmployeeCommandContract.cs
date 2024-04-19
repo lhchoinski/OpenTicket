@@ -8,21 +8,38 @@ namespace OpenTicket.Domain.Commands.Contracts.Employee
         public SaveEmployeeCommandContract(SaveEmployeeCommand command)
         {
 
-            Requires().IsLowerOrEqualsThan(command.Name, 50, "Nome", "O Nome deve conter no máximo 50 caracteres.");
-            Requires().IsNotNull(command.Name, "Nome", "Nome é obrigatório");
+            //Validacao do nome
             if (command.Name != null)
-                Requires().AreNotEquals(command.Name.Trim(), string.Empty, "Nome", "Nome não pode ser somente um espaço");
+            {
+                Requires().IsLowerOrEqualsThan(command.Name, 50, "O Nome deve conter no máximo 50 caracteres.");
+            }
+            else
+            {
+                Requires().IsNotNull(command.Name, "O campo Nome é obrigatório");
+            }
 
-            Requires().IsLowerOrEqualsThan(command.Email, 50, "Email", "O Email deve conter no máximo 50 caracteres.");
-            Requires().IsNotNull(command.Email, "Email", "Email é obrigatório");
+            //Validacao do email
             if (command.Email != null)
-                Requires().AreNotEquals(command.Email.Trim(), string.Empty, "Email", "Email não pode ser somente um espaço");
+            {
+                Requires().IsLowerOrEqualsThan(command.Email, 50, "O Email deve conter no máximo 50 caracteres.");
+            }
+            else
+            {
+                Requires().IsNotNull(command.Email, "O campo Email é obrigatório");
+            }
 
-            Requires().IsNotNull(command.Department, "Department", " O Departamento é obrigatório");
-            if (command.Department != null)
-            
-            Requires().IsNotNull(command.EmployeeType, "EmployeeType", "O Tipo do funcionário é obrigatório");
-               
+            //Validacao do departamento
+            if (command.Department == null)
+            {
+                Requires().IsNotNull(command.Department, "Departamento", " O Departamento é obrigatório");
+            }
+
+            //Validacao do tipo do funcionario
+            if (command.EmployeeType != null)
+            {
+               Requires().IsNotNull(command.EmployeeType, "EmployeeType", "O Tipo do funcionário é obrigatório");
+            }
+
         }
     }
 }

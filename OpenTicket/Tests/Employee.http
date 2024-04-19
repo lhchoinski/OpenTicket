@@ -1,0 +1,33 @@
+
+POST http://localhost:5290/Employee/
+Content-Type: application/json
+
+{
+    "Name": ,
+    "Email": "maria@exemplo.com",
+    "department": "aaa",
+    "employeeType": 2
+
+  }
+
+### get all addresses 
+GET http://localhost:5290/Employee/
+
+
+### search by ID or NAME, but it's not searching
+GET http://localhost:5290/Employee/1
+
+### update an existing address by ID 
+PUT http://localhost:5290/Employee/6
+Content-Type: application/json
+
+{
+    "Name": ,
+    "Email": "maria@exemplo.com",
+    "department": "aaa",
+    "employeeType": 2
+  }
+
+
+### deletion of a address by ID
+DELETE http://localhost:5290/Employee/12

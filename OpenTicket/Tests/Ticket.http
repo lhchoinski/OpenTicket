@@ -1,0 +1,31 @@
+
+POST http://localhost:5290/Ticket/
+Content-Type: application/json
+
+{
+    "title": "Pc travando",
+    "description": "Meu pc nao para de travar quando estou trabalhando",
+    "employeeId": 9
+  }
+
+### get all addresses 
+GET http://localhost:5290/Ticket/
+
+
+### search by ID or NAME, but it's not searching
+GET http://localhost:5290/api/Ticket/4
+
+### update an existing address by ID 
+PUT http://localhost:5290/api/Ticket/4
+Content-Type: application/json
+
+{ 
+  "id": "4",
+  "Title": "Ticket aberto editado",
+  "Description":"descricao do ticket",
+  "EmployeeId":"4",
+}
+
+
+### deletion of a address by ID
+DELETE http://localhost:5290/Ticket/14

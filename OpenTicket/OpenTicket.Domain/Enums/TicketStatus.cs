@@ -5,10 +5,10 @@ namespace OpenTicket.Domain.Enums
     public enum TicketStatus
     {
         [Description("Open")]
-        Open = 1,
+        Open = 0,
         [Description("InProgress")]
-        InProgress = 2,
+        InProgress = 1,
         [Description("Resolved")]
-        Resolved = 3
+        Resolved = 2
     }
 }

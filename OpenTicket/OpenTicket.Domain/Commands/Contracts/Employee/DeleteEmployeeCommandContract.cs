@@ -7,8 +7,11 @@ namespace OpenTicket.Domain.Commands.Contracts.Employee
     {
         public DeleteEmployeeCommandContract(DeleteEmployeeCommand command)
         {
-            Requires().IsNotNullOrEmpty(command.Id.ToString(), "Id", "Id é obrigatório");
-            Requires().IsGreaterThan(command.Id, 0, "Id", "Id deve ser maior que 0.");
+            if(command.Id == null)
+            {
+               Console.WriteLine("O Funcionario com o ID:"+ command.Id + "não exixte");
+            }
+            
         }
     }
 }

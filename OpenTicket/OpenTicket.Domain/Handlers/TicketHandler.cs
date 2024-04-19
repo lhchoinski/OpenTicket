@@ -28,11 +28,11 @@ namespace OpenTicket.Domain.Handlers
                             command.Title,
                             command.Description,
                             command.TechnicianDescription,
-                            command.CreatedAt,
-                            command.UpdatedAt,
+                            command.CreatedAt = DateTime.UtcNow,
+                            command.UpdatedAt = DateTime.UtcNow,
                             command.EmployeeId,
                             command.AssignedEmployeeId,
-                            command.Status
+                            command.Status = 0
                             );
 
             ticket.Id = await repository.SaveAsync(ticket);
@@ -50,7 +50,7 @@ namespace OpenTicket.Domain.Handlers
                             command.Description,
                             command.TechnicianDescription,
                             command.CreatedAt,
-                            command.UpdatedAt,
+                            command.UpdatedAt = DateTime.UtcNow,
                             command.EmployeeId,
                             command.AssignedEmployeeId,
                             command.Status

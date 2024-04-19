@@ -1,5 +1,6 @@
 using Flunt.Validations;
 using OpenTicket.Domain.Commands.Input.Ticket;
+using OpenTicket.Domain.Commands.Output;
 
 namespace OpenTicket.Domain.Commands.Contracts.Ticket
 {
@@ -7,8 +8,6 @@ namespace OpenTicket.Domain.Commands.Contracts.Ticket
     {
         public SaveTicketCommandContract(SaveTicketCommand command)
         {
-            Requires().IsNotNullOrEmpty(command.Id.ToString(), "Id", "Id é obrigatório");
-            Requires().IsGreaterThan(command.Id, 0, "Id", "Id deve ser maior que 0");
 
             Requires().IsLowerOrEqualsThan(command.Title, 50, "Title", "O Titulo deve conter no máximo 50 caracteres.");
             Requires().IsNotNull(command.Title, "Title", "Titulo é obrigatório");

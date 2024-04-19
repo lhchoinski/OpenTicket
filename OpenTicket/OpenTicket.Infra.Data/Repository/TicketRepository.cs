@@ -38,11 +38,11 @@ namespace OpenTicket.Infra.Data.Repository
             parameters.Add("@Title", ticket.Title);
             parameters.Add("@Description", ticket.Description);
             parameters.Add("@TechnicianDescription", ticket.TechnicianDescription);
-            parameters.Add("@CreatedAt", ticket.CreatedAt);
-            parameters.Add("@UpdatedAt", ticket.UpdatedAt);
+            parameters.Add("@CreatedAt", ticket.CreatedAt = DateTime.UtcNow);
+            parameters.Add("@UpdatedAt", ticket.UpdatedAt = DateTime.UtcNow);
             parameters.Add("@EmployeeId", ticket.EmployeeId);
             parameters.Add("@AssignedEmployeeId", ticket.AssignedEmployeeId);
-            parameters.Add("@Status", ticket.Status);
+            parameters.Add("@Status", ticket.Status = 0);
 
             return await dataContext.Connection.ExecuteAsync(TicketQueries.SALVAR, parameters);
         }
@@ -54,7 +54,7 @@ namespace OpenTicket.Infra.Data.Repository
             parameters.Add("@Description", ticket.Description);
             parameters.Add("@TechnicianDescription", ticket.TechnicianDescription);
             parameters.Add("@CreatedAt", ticket.CreatedAt);
-            parameters.Add("@UpdatedAt", ticket.UpdatedAt);
+            parameters.Add("@UpdatedAt", ticket.UpdatedAt = DateTime.UtcNow);
             parameters.Add("@EmployeeId", ticket.EmployeeId);
             parameters.Add("@AssignedEmployeeId", ticket.AssignedEmployeeId);
             parameters.Add("@Status", ticket.Status);

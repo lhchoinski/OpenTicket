@@ -27,7 +27,7 @@ namespace OpenTicket.Domain.Handlers
                             command.Id,
                             command.TechnicianDescription,
                             command.AssignedEmployeeId,
-                            command.UpdatedAt,
+                            command.UpdatedAt = DateTime.UtcNow,
                             command.Status
                             );
 
