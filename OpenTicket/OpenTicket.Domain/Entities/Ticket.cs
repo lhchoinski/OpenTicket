@@ -5,6 +5,15 @@ namespace OpenTicket.Domain.Entities
 {
     public class Ticket
     {
+        public Ticket(int id, string? technicianDescription, int assignedEmployeeId, DateTime? updatedAt, TicketStatus status)
+        {
+            Id = id;
+            TechnicianDescription = technicianDescription;
+            AssignedEmployeeId = assignedEmployeeId;
+            UpdatedAt = updatedAt;
+            Status = status;
+        }
+
         public Ticket(string title, string description, string? technicianDescription, DateTime createdAt, DateTime? updatedAt, int employeeId, int? assignedEmployeeId, TicketStatus status)
         {
             Title = title;
