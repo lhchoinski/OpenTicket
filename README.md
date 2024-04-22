@@ -6,8 +6,8 @@
 ### **Tecnologias Utilizadas** ⌨️
 - ASP.NET Core 6
 - MYSQL 
--DAPPER
--SWAGGER
+- DAPPER
+- SWAGGER
 
 ### **Funcionalidades** ⚙️
 - Cadastro de funcionarios (tecnico, cliente e administrador)
