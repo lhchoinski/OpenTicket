@@ -2,6 +2,8 @@
 
 #### ***OpenTicket foi desenvolvido com o objetivo de fixação dos conceitos de arquitetura limpa, padrão repository e CQRS.*** 
 #### ***É uma API onde os usuários podem cadastrar funcionarios,tickets e gerencia-los.
+#### ***Nesse projeto foi usado o padrão CQRS com uso de Queries e Repositoys para o gerenciamento das tabelas no banco de dados.
+
 
 ### **Tecnologias Utilizadas** ⌨️
 - ASP.NET Core 6
