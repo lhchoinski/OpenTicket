@@ -1,10 +1,7 @@
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OpenTicket.Domain.Handlers;
 using OpenTicket.Domain.Repository;
-using OpenTicket.Domain.Commands.Input.Employee;
 using OpenTicket.Domain.Commands.Input.Ticket;
-using OpenTicket.Domain.Commands.Output;
 using OpenTicket.Infra.Comum;
 
 namespace OpenTicket.Api.Controllers

@@ -1,14 +1,10 @@
-﻿using System;
-using Dapper;
+﻿using Dapper;
 using Microsoft.OpenApi.Models;
 using OpenTicket.Domain.Handlers;
 using OpenTicket.Domain.Repository;
 using OpenTicket.Infra.Data.Context;
-using Microsoft.AspNetCore.Builder;
 using OpenTicket.Infra.Data.Mappings;
 using OpenTicket.Infra.Data.Repository;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace OpenTicket.Api.Extensions
 {
@@ -33,8 +29,8 @@ namespace OpenTicket.Api.Extensions
         {
             services.AddTransient<EmployeeHandler, EmployeeHandler>();
             services.AddTransient<TicketHandler, TicketHandler>();
-            services.AddTransient<ManagerTicketHandler, ManagerTicketHandler >();
-            
+            services.AddTransient<ManagerTicketHandler, ManagerTicketHandler>();
+
         }
 
         /// <summary>
@@ -45,7 +41,7 @@ namespace OpenTicket.Api.Extensions
         {
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<ITicketRepository, TicketRepository>();
-            services.AddTransient<IManagerTicketRepository, ManagerTicketRepository >();
+            services.AddTransient<IManagerTicketRepository, ManagerTicketRepository>();
         }
 
         #endregion

@@ -1,9 +1,7 @@
 using OpenTicket.Infra.Comum;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OpenTicket.Domain.Handlers;
 using OpenTicket.Domain.Repository;
-using OpenTicket.Domain.Commands.Input.Employee;
 using OpenTicket.Domain.Commands.Input.Ticket;
 
 namespace OpenTicket.Api.Controllers
@@ -27,6 +25,6 @@ namespace OpenTicket.Api.Controllers
             return await handler.TicketManagerAsync(command);
         }
 
-       
+
     }
 }
